@@ -11,5 +11,10 @@ pipeline {
         sh 'echo \'linting api\''
       }
     }
+    stage('fast tests') {
+      steps {
+        sh 'echo \'running fasts tests\''
+      }
+    }
   }
 }
