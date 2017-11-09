@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'nginx/nginx'
+      image 'nginx'
     }
     
   }
@@ -14,6 +14,11 @@ pipeline {
     stage('fast tests') {
       steps {
         sh 'echo \'running fasts tests\''
+      }
+    }
+    stage('slow tests') {
+      steps {
+        sh 'echo \'running slow tests\''
       }
     }
   }
