@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'nginx'
-    }
-    
-  }
+  agent none
   stages {
     stage('lint') {
       steps {
@@ -19,6 +14,20 @@ pipeline {
     stage('slow tests') {
       steps {
         sh 'echo \'running slow tests\''
+      }
+    }
+    stage('selenium') {
+      parallel {
+        stage('selenium') {
+          steps {
+            sh 'echo \'running selenium\''
+          }
+        }
+        stage('selenium chrome') {
+          steps {
+            sh 'echo \'running selenium chrome\''
+          }
+        }
       }
     }
   }
